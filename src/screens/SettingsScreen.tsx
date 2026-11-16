@@ -11,7 +11,7 @@ import { autostartSupported, getAutostart, setAutostart } from "../services/auto
 import { defaultBackupName, readBackupFile, saveBackupFile } from "../services/backupFiles";
 import { useAppData } from "../state/AppData";
 
-const IS_WINDOWS = typeof navigator !== "undefined" && navigator.userAgent.includes("Windows");
+const USES_TRAY = typeof navigator !== "undefined" && !/Mac/.test(navigator.userAgent);
 
 interface RateRow {
   key: number;
@@ -319,8 +319,8 @@ export function SettingsScreen() {
               />
               {t("settings.autostart")}
             </label>
-            <p className="m-0 mt-1 text-label text-muted">{t(IS_WINDOWS ? "settings.autostartHintWin" : "settings.autostartHint")}</p>
-            <p className="m-0 mt-2 text-label text-muted">{t(IS_WINDOWS ? "settings.trayHintWin" : "settings.trayHint")}</p>
+            <p className="m-0 mt-1 text-label text-muted">{t(USES_TRAY ? "settings.autostartHintWin" : "settings.autostartHint")}</p>
+            <p className="m-0 mt-2 text-label text-muted">{t(USES_TRAY ? "settings.trayHintWin" : "settings.trayHint")}</p>
             {autostartError && (
               <p className="m-0 mt-2 text-label text-danger">{t("settings.autostartError", { msg: autostartError })}</p>
             )}

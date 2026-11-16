@@ -6,7 +6,7 @@
 
 **Subscriptions renew quietly. Tally tells you before they do.**
 
-A small desktop app that keeps the list of everything you pay for — weekly, monthly or yearly —
+A small desktop app for macOS, Windows and Linux that keeps the list of everything you pay for — weekly, monthly or yearly —
 and reminds you before each charge. Nothing leaves your computer.
 
 </div>
@@ -27,7 +27,7 @@ money goes out. No account, no server, no analytics — the app makes **zero net
 
 |  |  |
 | --- | --- |
-| **Reminders before every charge** | Native notifications on the day or up to seven days ahead. Close the window and Tally stays in the menu bar (macOS) or system tray (Windows), showing what is due next. |
+| **Reminders before every charge** | Native notifications on the day or up to seven days ahead. Close the window and Tally stays in the menu bar (macOS) or system tray (Windows, Linux), showing what is due next. |
 | **Honest totals** | Weekly, monthly and yearly plans add up to one monthly and one yearly figure in your base currency. You set exchange rates yourself; nothing is guessed. |
 | **Quick add** | About fifty popular services — Netflix, Spotify, ChatGPT, iCloud+ and others — with logo, category, typical price and cancel link filled in. Or type your own. |
 | **Free trials** | Mark a trial and get a "cancel before…" reminder. When it ends, it becomes a regular subscription. |
@@ -55,12 +55,14 @@ Get the latest version from **[Releases](https://github.com/ssaddist/sub-tracker
 | --- | --- |
 | macOS (Apple Silicon and Intel) | `Tally_x.y.z_universal.dmg` |
 | Windows 10 / 11 | `Tally_x.y.z_x64-setup.exe` |
+| Linux (64-bit) | `Tally_x.y.z_amd64.AppImage`, or `.deb` / `.rpm` |
 
 > [!NOTE]
 > The builds are not code-signed yet.
 > **macOS:** right-click Tally in Applications → **Open** the first time, or run
 > `xattr -dr com.apple.quarantine /Applications/Tally.app`.
 > **Windows:** if SmartScreen says "Windows protected your PC", click **More info → Run anyway**.
+> **Linux:** make the AppImage executable with `chmod +x Tally_*.AppImage`, or install the `.deb` / `.rpm`.
 
 ## Privacy
 
@@ -117,6 +119,15 @@ src-tauri/
 - **Backups**: if a restore fails midway, the previous data is put back.
 
 </details>
+
+## Releasing
+
+```bash
+npm run release -- patch    # or minor, major, or an exact version like 1.2.0
+```
+
+The script bumps the version everywhere, runs the checks, commits, tags and pushes.
+GitHub Actions then builds macOS, Windows and Linux and attaches the files to a draft release.
 
 ## License
 

@@ -1,6 +1,6 @@
 [package]
 name = "subscription-monitor"
-version = "0.1.0"
+version = "0.2.0"
 description = "Tally — a local-only subscription tracker"
 license = "MIT"
 repository = "https://github.com/ssaddist/sub-tracker"
